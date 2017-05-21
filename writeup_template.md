@@ -53,27 +53,23 @@ Here is an example of a traffic sign image before and after grayscaling.
 As a last step, I normalized the image data because it reduces the range of values the network works with from [0,256] to [-1,1]. This a more controlled range and also makes overfitting less likely.
 
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 32x32x1 Grayscale image   							| 
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	2x2      	| 2x2 stride, valid padding, outputs 14x14x6 				|
+| Convolution 5x5	    | 1x1 stride, valid padding, outputs 10x10x16      									|
+| RELU					|												|
+| Max pooling	2x2      	| 2x2 stride, valid padding, outputs 5x5x16 				|
+| Dropout					|					0.5 keep probability							|
+| Fully connected		| 400 flatten input, outputs 84       									|
+| Softmax				|        									|
  
 
-
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-
-To train the model, I used an ....
+To train the model, I used an AdamOptimizer with batch size of 128, 10 epochs, and learning rates of 0.01,0.01,0.005,0.005,0.003,0.003,0.001,0.001,0.001,0.001 for epochs 1,2,...,10.
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
