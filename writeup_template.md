@@ -14,11 +14,11 @@ The goals / steps of this project are the following:
 [image1]: ./examples/test_images/visualization.png "Visualization"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: ./examples/test_images/14.jpg "Traffic Sign 1"
+[image5]: ./examples/test_images/17.jpg "Traffic Sign 2"
+[image6]: ./examples/test_images/24.jpg "Traffic Sign 3"
+[image7]: ./examples/test_images/37.jpg "Traffic Sign 4"
+[image8]: ./examples/test_images/40.jpg "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -74,23 +74,14 @@ To train the model, I used an AdamOptimizer with batch size of 128, 10 epochs, a
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 0.994
+* validation set accuracy of 0.951 
+* test set accuracy of 0.936
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+I started with the LeNet architecture. It had a high accuracy on Training set but low accuracy on Validation set. I concluded that it was overfitting. I decided to simplify the model to solve the overfitting problem. I removed the last two fully connected layers. It was still overfitting. Then I tried dropout on the last layer (fully connected), so that features do not rely on each other too much. It was a great improvement. I was getting very good improvement on accuracy in the first few epochs, but it was getting worse in he later epochs. I concluded over shooting of the minimum cost was happening in the later epochs. So I decrease the learning rate for the later epochs. This improved the model accuracy for later epochos.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+I started with LeNet architecture because it was successful in image recognition. By using convolutional layers, it solved the problem of image transition.
  
-
 ###Test a Model on New Images
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
