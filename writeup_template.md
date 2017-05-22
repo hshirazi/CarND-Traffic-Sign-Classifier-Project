@@ -21,11 +21,11 @@ The goals / steps of this project are the following:
 [image8]: ./examples/test_images/40.jpg "Traffic Sign 5"
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 Here is a link to my [project code](https://github.com/hshirazi/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-###Data Set Summary & Exploration
+## Data Set Summary & Exploration
 
 I used the numpy library to calculate summary statistics of the traffic
 signs data set:
@@ -40,9 +40,9 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ![alt text][image1]
 
-###Design and Test a Model Architecture
+## Design and Test a Model Architecture
 
-#### Pre-Prossesing:
+**Pre-Prossesing:**
 
 As a first step, I decided to convert the images to grayscale because when I used the LeNet model withought grayscaling, it was overfitting. Grayscaling reduces the number of channels from 3 to 1, hence less complexity and less chance of overfitting. It helped greatly. This also means color was not an important feature.
 
@@ -76,11 +76,11 @@ My final model results were:
 * validation set accuracy of 0.951 
 * test set accuracy of 0.936
 
-I started with the LeNet architecture. It had a high accuracy on Training set but low accuracy on Validation set. I concluded that it was overfitting. I decided to simplify the model to solve the overfitting problem. I removed the last two fully connected layers. It was still overfitting. Then I tried dropout on the last layer (fully connected), so that features do not rely on each other too much. It was a great improvement. I was getting very good improvement on accuracy in the first few epochs, but it was getting worse in he later epochs. I concluded over shooting of the minimum cost was happening in the later epochs. So I decrease the learning rate for the later epochs. This improved the model accuracy for later epochos.
+I started with the LeNet architecture. It had a high accuracy on Training set but low accuracy on Validation set. I concluded that it was overfitting. I decided to simplify the model to solve the overfitting problem. I removed the last two fully connected layers. It was still overfitting. Then I tried dropout on the last layer (fully connected), so that features do not rely on each other too much. It was a great improvement. I was getting very good improvement on accuracy in the first few epochs, but it was getting worse in the later epochs. I concluded over shooting of the minimum cost was happening in the later epochs. So I decreased the learning rate for the later epochs. This improved the model accuracy for later epochs.
 
 I started with LeNet architecture because it was successful in image recognition. By using convolutional layers, it solved the problem of image transition.
  
-###Test a Model on New Images
+## Test the Model on New Images
 
 Here are five German traffic signs that I found on the web:
 
@@ -93,7 +93,7 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
+| Stop Sign      		| Stop Sign   									| 
 | No Entry     			| No Entry 										|
 | Road narrows on the right	| Road narrows on the right	|
 | Go straight or left	      		| Go straight or left					 				|
@@ -101,8 +101,6 @@ Here are the results of the prediction:
 
 
 The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 0.936.
-
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
@@ -126,7 +124,7 @@ For the second image, the model is almost certain that this is a No Entry (proba
 | 0.0000	      			| Speed limit (30 km/h)					 				|
 | 0.0000				    | No overtaking     							|
 
-For the third image, the model is absolutely sure that this is a "Road narrows on the right" (probability of 0.9686), and the image does contain a Road narrows on the right.
+For the third image, the model is absolutely sure that this is a Road narrows on the right (probability of 0.9686), and the image does contain a Road narrows on the right.
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
