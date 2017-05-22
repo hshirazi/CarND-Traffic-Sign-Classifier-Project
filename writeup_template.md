@@ -73,8 +73,8 @@ To train the model, I used an AdamOptimizer with batch size of 128, 10 epochs, a
 
 My final model results were:
 * training set accuracy of 0.994
-* validation set accuracy of 0.951 
-* test set accuracy of 0.936
+* validation set accuracy of 0.954 
+* test set accuracy of 0.943
 
 I started with the LeNet architecture. It had a high accuracy on Training set but low accuracy on Validation set. I concluded that it was overfitting. I decided to simplify the model to solve the overfitting problem. I removed the last two fully connected layers. It was still overfitting. Then I tried dropout on the last layer (fully connected), so that features do not rely on each other too much. It was a great improvement. I was getting very good improvement on accuracy in the first few epochs, but it was getting worse in the later epochs. I concluded over shooting of the minimum cost was happening in the later epochs. So I decreased the learning rate for the later epochs. This improved the model accuracy for later epochs.
 
@@ -104,35 +104,35 @@ The model was able to correctly guess 5 of the 5 traffic signs, which gives an a
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is almost certain that this is a Stop sign (probability of 0.9999), and the image does contain a Stop sign. The top five soft max probabilities were
+For the first image, the model is almost certain that this is a Stop sign (probability of 1.0000), and the image does contain a Stop sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 0.9999         			| Stop sign   									| 
-| 0.0000     				| Speed limit (120 km/h)	 										|
-| 0.0000					| Turn right ahead											|
-| 0.0000	      			| No Entry					 				|
-| 0.0000				    | Give way    							|
+| 1.0000         			| Stop sign   									| 
+| 0.0000     				| Speed limit (60 km/h)	 										|
+| 0.0000					| Give way											|
+| 0.0000	      			| Keep right					 				|
+| 0.0000				    | Turn right ahead    							|
 
-For the second image, the model is almost certain that this is a No Entry (probability of 1.0), and the image does contain a No Entry. The top five soft max probabilities were
+For the second image, the model is almost certain that this is a No Entry (probability of 1.0000), and the image does contain a No Entry. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1.0000         			| No Entry   									| 
 | 0.0000     				| Stop Sign 										|
-| 0.0000					| Keep right											|
-| 0.0000	      			| Speed limit (30 km/h)					 				|
-| 0.0000				    | No overtaking     							|
+| 0.0000					| Turn left ahead											|
+| 0.0000	      			| Keep right					 				|
+| 0.0000				    | Speed limit (30 km/h)     							|
 
-For the third image, the model is absolutely sure that this is a Road narrows on the right (probability of 0.9686), and the image does contain a Road narrows on the right.
+For the third image, the model is absolutely sure that this is a Road narrows on the right (probability of 0.9996), and the image does contain a Road narrows on the right.
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 0.9686         			| Road narrows on the right  									| 
-| 0.0302     				| Pedestrians 										|
-| 0.0006					| Road ahead freezes easily and is then slippery											|
-| 0.0003	      			| Bicycles crossing					 				|
-| 0.0001				    | Right of way at the next crossroads    							|
+| 0.9996         			| Road narrows on the right  									| 
+| 0.0001     				| Road ahead freezes easily and is then slippery 										|
+| 0.0001					| 					Slippery road						|
+| 0.0001	      			| Pedestrians				 				|
+| 0.0000				    | Right of way at the next crossroads    							|
 
 
 For the fourth image, the model is almost certain that this is a Go straight or left (probability of 1.0000), and the image does contain a Go straight or left. The top five soft max probabilities were
@@ -141,20 +141,20 @@ For the fourth image, the model is almost certain that this is a Go straight or 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1.0000         			| Go straight or left	   									| 
-| 0.0000     				| Speed limit (30 km/h) 										|
-| 0.0000					| Speed limit (70 km/h)											|
-| 0.0000	      			| Speed limit (20 km/h)					 				|
-| 0.0000				    | Ahead only     							|
+| 0.0000     				| Ahead only 										|
+| 0.0000					| Speed limit (30 km/h)											|
+| 0.0000	      			| Roundabout mandatory					 				|
+| 0.0000				    | Keep left    							|
 
-For the fifth image, the model is almost certain that this is a Roundabout mandatory (probability of 0.915), and the image does contain a Roundabout mandatory. The top five soft max probabilities were
+For the fifth image, the model is almost certain that this is a Roundabout mandatory (probability of 0.9784), and the image does contain a Roundabout mandatory. The top five soft max probabilities were
 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 0.9156         			| Roundabout mandatory	   									| 
-| 0.0663     				| priority road 										|
-| 0.0119					| Speed limit (100 km/h)											|
-| 0.0048	      			| Speed limit (30 km/h)					 				|
-| 0.0005				    | Speed limit (120 km/h)    							|
+| 0.9784         			| Roundabout mandatory	   									| 
+| 0.0122     				| Speed limit (100 km/h) 										|
+| 0.0054					| priority road											|
+| 0.0009	      			| Turn right ahead					 				|
+| 0.0008				    | Speed limit (30 km/h)    							|
 
 
